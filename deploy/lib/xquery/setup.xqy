@@ -1148,6 +1148,9 @@ declare function setup:delete-databases($db-config as element(db:database))
   return
     if (admin:database-exists($admin-config, $db-name)) then
       let $db-id := admin:database-get-id($admin-config, $db-name)
+      let $admin-config := admin:database-set-schema-database($admin-config, $db-id, $default-schemas)
+      let $admin-config := admin:database-set-security-database($admin-config, $db-id, $default-security)
+      let $admin-config := admin:database-set-triggers-database($admin-config, $db-id, 0)
       let $forest-ids := admin:database-get-attached-forests($admin-config, $db-id)
       let $detach :=
         for $id in $forest-ids

@@ -2036,7 +2036,7 @@ private
       if ['rest', 'hybrid'].include? @properties["ml.app-type"]
         # This app uses the REST API, so grant permissions to the rest roles. This allows REST extensions to call
         # modules not deployed through the REST API.
-        # These roles are present in MarkLogic 6+.
+        # These roles are present in MarkLogic 7+.
         src_permissions.push permissions('rest-admin', Roxy::ContentCapability::RU)
         src_permissions.push permissions('rest-extension-user', Roxy::ContentCapability::EXECUTE)
         src_permissions.flatten!
